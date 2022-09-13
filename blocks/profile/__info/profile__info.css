@@ -4,6 +4,7 @@
   align-items: end;
   column-gap: 18px;
   row-gap: 16px;
+  max-width: 550px;
 }
 
 @media screen and (max-width: 768px) {
