@@ -1,0 +1,18 @@
+.popup__close {
+  position: absolute;
+  top: -43px;
+  right: -40px;
+  width: 32px;
+  height: 32px;
+  background-image: url('../../../images/close.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+}
+
+.popup__close:hover {
+  opacity: .6;
+}

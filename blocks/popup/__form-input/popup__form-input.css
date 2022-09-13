@@ -1,0 +1,16 @@
+.popup__form-input {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+  font-size: 14px;
+  padding: 0 0 13px 0;
+  outline: none;
+  max-height: 27px;
+  box-sizing: border-box;
+}
+
+.popup__form-input:focus {
+  border-bottom: 1px solid #000;
+}
