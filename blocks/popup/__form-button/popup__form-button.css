@@ -15,3 +15,12 @@
 .popup__form-button:hover {
   background: #313131;
 }
+
+@media screen and (max-width: 468px)
+{
+  .popup__form-button {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
