@@ -16,7 +16,7 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 934px) {
   .profile__info-edit {
     width: 18px;
     height: 18px;

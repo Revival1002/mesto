@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 934px) {
   .profile__info-name {
     font-weight: 500;
     font-size: 27px;
@@ -17,3 +17,10 @@
     max-width: 244px;
   }
 }
+
+@media screen and (max-width: 340px) {
+  .profile__info-name {
+    max-width: 220px;
+  }
+}
+
