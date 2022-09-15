@@ -1,0 +1,26 @@
+.profile__info-edit {
+  border: 1px solid #fff;
+  background: transparent;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-8px);
+  background-image: url('../../../images/pen.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 10px;
+  cursor: pointer;
+  transition: opacity .25s ease;
+}
+
+.profile__info-edit:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 934px) {
+  .profile__info-edit {
+    width: 18px;
+    height: 18px;
+    background-size: 7.5px 7.5px;
+    transform: translateY(-7px);
+  }
+}
