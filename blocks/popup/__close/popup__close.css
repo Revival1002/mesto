@@ -11,13 +11,14 @@
   cursor: pointer;
   border: 0;
   background-color: transparent;
+  transition: opacity .25s ease;
 }
 
 .popup__close:hover {
   opacity: .6;
 }
 
-@media screen and (max-width: 468px) {
+@media screen and (max-width: 546px) {
   .popup__close {
     width: 20px;
     height: 20px;
