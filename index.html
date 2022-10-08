@@ -21,54 +21,12 @@
 				<button type="button" class="profile__add-button"></button>
 			</section>
 			<section aria-label="Места путешествий" class="elements">
-				<div class="element">
-					<img src="./images/monumentvalley.jpg" alt="Долина монументов" class="element__image" />
-					<div class="element__text-wrap">
-						<h2 class="element__title">Долина Монументов</h2>
-						<button type="button" class="element__like"></button>
-					</div>
-				</div>
-				<div class="element">
-					<img src="./images/la.jpg" alt="Лос-Анджелес. Беверли Хиллз." class="element__image" />
-					<div class="element__text-wrap">
-						<h2 class="element__title">Лос-Анджелес</h2>
-						<button type="button" class="element__like"></button>
-					</div>
-				</div>
-				<div class="element">
-					<img src="./images/ny.jpg" alt="Вид на Манхэттанский мост" class="element__image" />
-					<div class="element__text-wrap">
-						<h2 class="element__title">Нью-Йорк</h2>
-						<button type="button" class="element__like"></button>
-					</div>
-				</div>
-				<div class="element">
-					<img src="./images/vegas.jpg" alt="Знак на въезде в Лас-Вегас" class="element__image" />
-					<div class="element__text-wrap">
-						<h2 class="element__title">Лас-Вегас</h2>
-						<button type="button" class="element__like"></button>
-					</div>
-				</div>
-				<div class="element">
-					<img src="./images/killbillchurch.jpg" alt="Церковь из Убить Билла" class="element__image" />
-					<div class="element__text-wrap">
-						<h2 class="element__title">Ланкастер (CA)</h2>
-						<button type="button" class="element__like"></button>
-					</div>
-				</div>
-				<div class="element">
-					<img src="./images/sf.jpg" alt="Морские львы на Пирсе 39" class="element__image" />
-					<div class="element__text-wrap">
-						<h2 class="element__title">Сан-Франциско</h2>
-						<button type="button" class="element__like"></button>
-					</div>
-				</div>
 			</section>
 		</main>
 		<footer class="footer">
 			<p class="footer__copyright">© 2020 Mesto Russia</p>
 		</footer>
-		<div class="popup">
+		<div class="popup popup__edit-profile">
 			<div class="popup__overlay"></div>
 			<div class="popup__container">
 				<button type="button" class="popup__close"></button>
@@ -80,6 +38,36 @@
 				</form>
 			</div>
 		</div>
+    <div class="popup popup__add-image">
+      <div class="popup__overlay"></div>
+      <div class="popup__container">
+        <button type="button" class="popup__close"></button>
+        <form id="popup__add-image" name="popup_add-image" class="popup__form">
+          <h2 class="popup__form-title">Новое место</h2>
+          <input required class="popup__form-input" maxlength="20" name="title" type="text" placeholder="Название" />
+          <input required class="popup__form-input" name="image" type="text" placeholder="Ссылка на картинку" />
+          <button type="submit" class="popup__form-button">Создать</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup__fullscreen">
+      <div class="popup__overlay popup__overlay_dark"></div>
+        <div class="popup__wrapper">
+          <button type="button" class="popup__close"></button>
+          <img class="popup__full-image" src="" alt="">
+          <p class="popup__subtitle"></p>
+        </div>
+    </div>
+    <template id="card">
+      <div class="element">
+        <div class="element__delete"></div>
+        <img src="" alt="" class="element__image" />
+        <div class="element__text-wrap">
+          <h2 class="element__title"></h2>
+          <button type="button" class="element__like"></button>
+        </div>
+      </div>
+    </template>
 		<script src="./scripts/script.js"></script>
 	</body>
 </html>
