@@ -8,11 +8,11 @@ let editButton = document.querySelector('.profile__info-edit'),
   imageTitle = document.querySelector('.popup__form-input[name="title"]'),
   imageLink = document.querySelector('.popup__form-input[name="image"]'),
 	saveForm = document.querySelector('#popup__profile'),
-  saveImageForm = document.querySelector('#popup__add-image'),
+  saveImageForm = document.querySelector('#popup_add-image'),
 	popup = document.querySelector('.popup'),
   popups = document.querySelectorAll('.popup'),
   popupFullImage = document.querySelector('.popup__full-image'),
-  popupFS = document.querySelector('.popup__fullscreen'),
+  popupFS = document.querySelector('.popup_fullscreen'),
   popupSubTitle = document.querySelector('.popup__subtitle');
 
 const initialCards = [
@@ -65,9 +65,9 @@ function openPopup(evt) {
   let popupTarget = evt.target.className;
   if (popupTarget === 'profile__add-button')
   {
-    popup = document.querySelector('.popup__add-image');
+    popup = document.querySelector('.popup_add-image');
   } else if (popupTarget === 'profile__info-edit') {
-    popup = document.querySelector('.popup__edit-profile');
+    popup = document.querySelector('.popup_edit-profile');
   }
 
 	popup.classList.add('popup_opened');
