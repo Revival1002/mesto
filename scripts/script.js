@@ -71,7 +71,7 @@ function makeCard(name, link, alt) {
           elementLike = cardElement.querySelector('.element__like'),
           elementDelete = cardElement.querySelector('.element__delete');
     elementImage.src = link;
-    elementImage.alt = alt;
+    elementImage.alt = alt || name;
     elementTitle.textContent = name;
 
     elementDelete.addEventListener('click', (evt) => {
