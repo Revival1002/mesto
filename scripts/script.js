@@ -16,6 +16,7 @@ const buttonEdit = document.querySelector('.profile__info-edit'),
       popupAddImage = document.querySelector('.popup_add-image'),
       popupFullscreen = document.querySelector('.popup_fullscreen'),
       popupSubTitle = document.querySelector('.popup__subtitle');
+      overlays = document.querySelectorAll('.popup__overlay');
 
 initialCards.forEach(function(item) {
     const card = makeCard(item['name'], item['link'], item['alt']);
@@ -34,6 +35,19 @@ buttonsClose.forEach(element => {
 
 formSave.addEventListener('submit', saveData);
 imageFormSave.addEventListener('submit', saveImage);
+overlays.forEach((item) => {
+  item.addEventListener('click',(evt) => {
+    const popup = evt.target.closest('.popup');
+    closePopup(popup);
+  });
+});
+
+document.addEventListener('keydown',(evt) => {
+  if (evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
+});
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
