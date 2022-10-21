@@ -24,9 +24,9 @@ initialCards.forEach(function(item) {
 });
 
 buttonEdit.addEventListener('click',() => {
-  openPopup(popupEditProfile);
   nameInput.value = nameText.textContent;
   descriptionInput.value = descText.textContent;
+  openPopup(popupEditProfile);
 });
 buttonAdd.addEventListener('click',() => openPopup(popupAddImage));
 buttonsClose.forEach(element => {
@@ -50,6 +50,12 @@ document.addEventListener('keydown',(evt) => {
 });
 
 function openPopup(popup) {
+  const form = popup.querySelector('.popup__form');
+  if (form !== null) {
+    const inputs = Array.from(form.querySelectorAll('.popup__form-input'));
+    const button = form.querySelector('.popup__form-button');
+    toggleButtonState(inputs, button);
+  }
   popup.classList.add('popup_opened');
 }
 

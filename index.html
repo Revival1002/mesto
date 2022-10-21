@@ -30,25 +30,39 @@
 			<div class="popup__overlay"></div>
 			<div class="popup__container">
 				<button type="button" class="popup__close"></button>
-				<form id="popup__profile" name="popup_edit-profile" class="popup__form">
+				<form novalidate id="popup__profile" name="popup_edit-profile" class="popup__form">
 					<h2 class="popup__form-title">Редактировать профиль</h2>
-					<input class="popup__form-input" maxlength="20" name="name" type="text" placeholder="Имя и фамилия" />
-					<input class="popup__form-input" maxlength="50" name="description" type="text" placeholder="Род занятий" />
-					<button type="submit" class="popup__form-button">Сохранить</button>
+          <fieldset class="popup__set">
+            <label class="popup__field">
+					    <input id="name-input" class="popup__form-input" required minlength="2" maxlength="40" name="name" type="text" placeholder="Имя и фамилия" />
+              <span class="name-input-error popup__warning"></span>
+            </label>
+            <label class="popup__field">
+					    <input id="description-input" class="popup__form-input" required minlength="2" maxlength="200" name="description" type="text" placeholder="Род занятий" />
+              <span class="description-input-error popup__warning"></span>
+            </label>
+					  <button type="submit" class="popup__form-button">Сохранить</button>
+          </fieldset>
 				</form>
 			</div>
 		</div>
-    <div class="popup popup_add-image popup_opened">
+    <div class="popup popup_add-image">
       <div class="popup__overlay"></div>
       <div class="popup__container">
         <button type="button" class="popup__close"></button>
-        <form id="popup_add-image" name="popup_add-image" class="popup__form">
+        <form novalidate id="popup_add-image" name="popup_add-image" class="popup__form">
           <h2 class="popup__form-title">Новое место</h2>
-          <input required class="popup__form-input" maxlength="20" name="title" type="text" placeholder="Название" />
-          <p class="popup__warning">Вы пропустили это поле</p>
-          <input required class="popup__form-input" name="image" type="text" placeholder="Ссылка на картинку" />
-          <p class="popup__warning">Введите адрес сайта</p>
-          <button type="submit" class="popup__form-button">Создать</button>
+          <fieldset class="popup__set">
+            <label class="popup__field">
+              <input required id="title-input" class="popup__form-input" minlength="2" maxlength="30" name="title" type="text" placeholder="Название" />
+              <span class="title-input-error popup__warning"></span>
+            </label>
+            <label class="popup__field">
+              <input id="url-input" type="url" required class="popup__form-input" name="image" type="text" placeholder="Ссылка на картинку" />
+              <span class="url-input-error popup__warning"></span>
+            </label>
+            <button type="submit" class="popup__form-button popup__form-button_disabled">Создать</button>
+          </fieldset>
         </form>
       </div>
     </div>

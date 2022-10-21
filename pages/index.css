@@ -35,11 +35,16 @@
 @import url(../blocks/popup/__overlay/_dark/popup__overlay_dark.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__set/popup__set.css);
+@import url(../blocks/popup/__field/popup__field.css);
 @import url(../blocks/popup/__wrapper/popup__wrapper.css);
 @import url(../blocks/popup/__form-title/popup__form-title.css);
 @import url(../blocks/popup/__form-input/popup__form-input.css);
+@import url(../blocks/popup/__form-input/_invalid/popup__form-input_invalid.css);
 @import url(../blocks/popup/__form-button/popup__form-button.css);
+@import url(../blocks/popup/__form-button/_disabled/popup__form-button_disabled.css);
 @import url(../blocks/popup/__full-image/popup__full-image.css);
 @import url(../blocks/popup/__subtitle/popup__subtitle.css);
 @import url(../blocks/popup/__warning/popup__warning.css);
+@import url(../blocks/popup/__warning/_visible/popup__warning_visible.css);
 @import url(../blocks/popup/__close/popup__close.css);
