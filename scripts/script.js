@@ -42,25 +42,27 @@ overlays.forEach((item) => {
   });
 });
 
-document.addEventListener('keydown',(evt) => {
+function closeByEsc(evt) {
   if (evt.key === 'Escape') {
-    const popup = document.querySelector('.popup_opened');
-    closePopup(popup);
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
-});
+}
 
 function openPopup(popup) {
   const form = popup.querySelector('.popup__form');
   if (form !== null) {
     const inputs = Array.from(form.querySelectorAll('.popup__form-input'));
     const button = form.querySelector('.popup__form-button');
-    toggleButtonState(inputs, button);
+    toggleButtonState(inputs, button, settings);
   }
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEsc);
 }
 
 function saveData(evt) {
