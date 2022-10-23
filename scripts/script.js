@@ -50,12 +50,6 @@ function closeByEsc(evt) {
 }
 
 function openPopup(popup) {
-  const form = popup.querySelector('.popup__form');
-  if (form !== null) {
-    const inputs = Array.from(form.querySelectorAll('.popup__form-input'));
-    const button = form.querySelector('.popup__form-button');
-    toggleButtonState(inputs, button, settings);
-  }
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
 }
