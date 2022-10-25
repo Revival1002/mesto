@@ -15,7 +15,7 @@ const buttonEdit = document.querySelector('.profile__info-edit'),
       popupEditProfile = document.querySelector('.popup_edit-profile'),
       popupAddImage = document.querySelector('.popup_add-image'),
       popupFullscreen = document.querySelector('.popup_fullscreen'),
-      popupSubTitle = document.querySelector('.popup__subtitle');
+      popupSubTitle = document.querySelector('.popup__subtitle'),
       overlays = document.querySelectorAll('.popup__overlay');
 
 initialCards.forEach(function(item) {
@@ -28,7 +28,12 @@ buttonEdit.addEventListener('click',() => {
   descriptionInput.value = descText.textContent;
   openPopup(popupEditProfile);
 });
-buttonAdd.addEventListener('click',() => openPopup(popupAddImage));
+buttonAdd.addEventListener('click',() => {
+  const inputList = Array.from(popupAddImage.querySelectorAll(`.${settings.input}`));
+  const buttonElement = popupAddImage.querySelector(`.${settings.button}`);
+  openPopup(popupAddImage);
+  toggleButtonState(inputList, buttonElement, settings);
+});
 buttonsClose.forEach(element => {
   element.addEventListener('click',() => closePopup(element.closest('.popup')));
 });
