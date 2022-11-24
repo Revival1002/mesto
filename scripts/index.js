@@ -1,43 +1,12 @@
 import {initialCards} from './cards.js';
-import {settings} from './validate.js';
 
-class Card {
-  constructor(data, templateSelector) {
-    this._name = data.name;
-    this._alt = data.alt;
-    this._link = data.link
-    this._template = templateSelector;
-  }
-
-  _getTemplate() {
-    const cardElement = document.querySelector(this._template)
-                                .content
-                                .querySelector('.element').cloneNode(true);
-    return cardElement;
-  }
-
-  generateCard() {
-    this._element = this._getTemplate();
-    this._setEventListeners();
-    this._element.querySelector('.element__image').src = this._link;
-    this._element.querySelector('.element__image').alt = this._alt || this._name;
-    this._element.querySelector('.element__title').textContent = this._name;
-
-    return this._element;
-  }
-
-  _setEventListeners() {
-    this._element.querySelector('.element__like').addEventListener('click', (evt) => {
-      evt.target.classList.toggle('element__like_active');
-    });
-
-    this._element.querySelector('.element__delete').addEventListener('click', (evt) => {
-      evt.target.closest('.element').remove();
-    });
-
-    this._element.querySelector('.element__image').addEventListener('click', openImage);
-  }
-
+const settings = { //Настройки для валидации
+  form: 'popup__form',
+  input: 'popup__form-input',
+  button: 'popup__form-button',
+  buttonDisabled: 'popup__form-button_disabled',
+  errorClass: 'popup__warning_visible',
+  inputClass: 'popup__form-input_invalid',
 }
 
 const buttonEdit = document.querySelector('.profile__info-edit'),
@@ -59,11 +28,30 @@ const buttonEdit = document.querySelector('.profile__info-edit'),
       popupSubTitle = document.querySelector('.popup__subtitle'),
       overlays = document.querySelectorAll('.popup__overlay');
 
-initialCards.forEach(function(item) {
-    const card = new Card(item, '#card');
-    const cardElement = card.generateCard();
+const openImage = (evt) => {
+        const target = evt.target,
+              title = target.closest('.element').querySelector('.element__title').textContent;
+        imagePopupFullImage.src = target.src;
+        if (target.alt == '') {
+          imagePopupFullImage.alt = title;
+        } else {
+          imagePopupFullImage.alt = target.alt;
+        }
 
-    cardsContainer.prepend(cardElement);
+        popupSubTitle.textContent = title;
+        openPopup(popupFullscreen);
+      }
+
+const formList = Array.from(document.querySelectorAll(`.${settings.form}`));
+      formList.forEach((form) => {
+        const validation = new FormValidator(settings, form);
+        validation.enableValidation();
+      });
+
+
+initialCards.forEach(function(item) {
+    item.action = openImage;
+    cardsContainer.prepend(newCard(item, '#card'));
 });
 
 buttonEdit.addEventListener('click',() => {
@@ -74,9 +62,13 @@ buttonEdit.addEventListener('click',() => {
 buttonAdd.addEventListener('click',() => {
   const inputList = Array.from(popupAddImage.querySelectorAll(`.${settings.input}`));
   const buttonElement = popupAddImage.querySelector(`.${settings.button}`);
+
+  const form = popupAddImage.querySelector('.popup__form');
+  console.log(form);
+  const formValidation = new FormValidator(settings, form);
+  formValidation.enableValidation();
+  console.log(formValidation);
   openPopup(popupAddImage);
-  buttonElement.classList.add(settings.buttonDisabled);
-  buttonElement.setAttribute('disabled', '');
 });
 buttonsClose.forEach(element => {
   element.addEventListener('click',() => closePopup(element.closest('.popup')));
@@ -121,27 +113,19 @@ function saveImage(evt) {
   const item = {
     name: imageTitle.value,
     alt: imageTitle.value,
-    link: imageLink.value
+    link: imageLink.value,
+    action: openImage
   }
-  const card = new Card(item, '#card');
-  const cardElement = card.generateCard();
   const popup = evt.target.closest('.popup');
-  cardsContainer.prepend(cardElement);
+  cardsContainer.prepend(newCard(item, '#card'));
   imageFormSave.reset();
   closePopup(popup);
 }
 
-function openImage(evt) {
-  const target = evt.target,
-        title = target.closest('.element').querySelector('.element__title').textContent;
-  imagePopupFullImage.src = target.src;
-  if (target.alt == '') {
-    imagePopupFullImage.alt = title;
-  } else {
-    imagePopupFullImage.alt = target.alt;
-  }
-
-  popupSubTitle.textContent = title;
-  openPopup(popupFullscreen);
+function newCard(item, templateSelector) {
+  const card = new Card(item, templateSelector);
+  return card.generateCard();
 }
+
+
 

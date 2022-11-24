@@ -1,9 +1,10 @@
 .popup__warning {
+  display: block;
   color: red;
   position: relative;
   top: 5px;
   font-size: 12px;
   line-height: 15px;
   visibility: hidden;
-  min-height: 12px;
+  min-height: 30px;
 }
