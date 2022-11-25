@@ -29,17 +29,17 @@ class FormValidator {
   }
 
   _showInputError(form, input, errorMessage, settings) {
-    const formError = form.querySelector(`.${input.id}-error`);
-    formError.classList.add(settings.errorClass);
+    this._formError = form.querySelector(`.${input.id}-error`);
+    this._formError.classList.add(settings.errorClass);
     input.classList.add(settings.inputClass);
-    formError.textContent = errorMessage;
+    this._formError.textContent = errorMessage;
   }
 
   _hideInputError(form, input, settings) {
-    const formError = form.querySelector(`.${input.id}-error`);
-    formError.classList.remove(settings.errorClass);
+    this._formError = form.querySelector(`.${input.id}-error`);
+    this._formError.classList.remove(settings.errorClass);
     input.classList.remove(settings.inputClass);
-    formError.textContent = '';
+    this._formError.textContent = '';
   }
 
   _toggleButtonState(inputs, button, settings) {

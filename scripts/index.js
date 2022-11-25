@@ -48,10 +48,14 @@ const formList = Array.from(document.querySelectorAll(`.${settings.form}`));
         validation.enableValidation();
       });
 
+const formAdd = popupAddImage.querySelector('.popup__form');
+const formAddValidation = new FormValidator(settings, formAdd);
+formAddValidation.enableValidation();
+
 
 initialCards.forEach(function(item) {
     item.action = openImage;
-    cardsContainer.prepend(newCard(item, '#card'));
+    cardsContainer.prepend(makeCard(item, '#card'));
 });
 
 buttonEdit.addEventListener('click',() => {
@@ -60,14 +64,6 @@ buttonEdit.addEventListener('click',() => {
   openPopup(popupEditProfile);
 });
 buttonAdd.addEventListener('click',() => {
-  const inputList = Array.from(popupAddImage.querySelectorAll(`.${settings.input}`));
-  const buttonElement = popupAddImage.querySelector(`.${settings.button}`);
-
-  const form = popupAddImage.querySelector('.popup__form');
-  console.log(form);
-  const formValidation = new FormValidator(settings, form);
-  formValidation.enableValidation();
-  console.log(formValidation);
   openPopup(popupAddImage);
 });
 buttonsClose.forEach(element => {
@@ -117,12 +113,13 @@ function saveImage(evt) {
     action: openImage
   }
   const popup = evt.target.closest('.popup');
-  cardsContainer.prepend(newCard(item, '#card'));
-  imageFormSave.reset();
+  cardsContainer.prepend(makeCard(item, '#card'));
   closePopup(popup);
+  imageFormSave.reset();
+  formAddValidation.enableValidation();
 }
 
-function newCard(item, templateSelector) {
+function makeCard(item, templateSelector) {
   const card = new Card(item, templateSelector);
   return card.generateCard();
 }

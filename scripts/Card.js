@@ -31,7 +31,7 @@ class Card {
     });
 
     this._element.querySelector('.element__delete').addEventListener('click', () => {
-      this._element.closest('.element').remove();
+      this._element.remove();
       this._element = null;
     });
 
