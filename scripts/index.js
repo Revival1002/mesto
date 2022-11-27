@@ -1,6 +1,6 @@
 import {initialCards} from './cards.js';
 
-const settings = { //Настройки для валидации
+const settings = {
   form: 'popup__form',
   input: 'popup__form-input',
   button: 'popup__form-button',
@@ -8,6 +8,7 @@ const settings = { //Настройки для валидации
   errorClass: 'popup__warning_visible',
   inputClass: 'popup__form-input_invalid',
 }
+
 
 const buttonEdit = document.querySelector('.profile__info-edit'),
       buttonAdd = document.querySelector('.profile__add-button'),
@@ -42,16 +43,13 @@ const openImage = (evt) => {
         openPopup(popupFullscreen);
       }
 
+const forms = {};
 const formList = Array.from(document.querySelectorAll(`.${settings.form}`));
       formList.forEach((form) => {
         const validation = new FormValidator(settings, form);
         validation.enableValidation();
+        forms[validation.getFormId()] = validation;
       });
-
-const formAdd = popupAddImage.querySelector('.popup__form');
-const formAddValidation = new FormValidator(settings, formAdd);
-formAddValidation.enableValidation();
-
 
 initialCards.forEach(function(item) {
     item.action = openImage;
@@ -116,13 +114,16 @@ function saveImage(evt) {
   cardsContainer.prepend(makeCard(item, '#card'));
   closePopup(popup);
   imageFormSave.reset();
-  formAddValidation.enableValidation();
+  forms['popup_add-image'].disableButton();
 }
 
 function makeCard(item, templateSelector) {
   const card = new Card(item, templateSelector);
   return card.generateCard();
 }
+
+
+console.log(forms);
 
 
 
