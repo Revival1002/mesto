@@ -123,7 +123,6 @@ function makeCard(item, templateSelector) {
 }
 
 
-console.log(forms);
 
 
 
